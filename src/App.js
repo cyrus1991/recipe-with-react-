@@ -33,12 +33,25 @@ class App extends Component {
     });
     console.log(this.state.recipes);
   };
+  /* 
+   with ComponentDidMount we wanna get access to whatever we have in 
+   componentdidUpdate wich is our localStorage in this case 
+   in the other way we wanna fetch everything that is in our localStorage!
+  */
 componentDidMount = () => {
   const json = localStorage.getItem("recipes")
   const recipes = JSON.parse(json)
  this.setState({recipes})
 }
 
+/* this lifecycle hook means whatever is in this method
+is gonna work as soon as the component ubdates 
+so when we make changes on the component 
+it's gonna ubdate it in to local storage cus we make a localstorage 
+method in it 
+in the other way means as soon as the state updates the componentdidupdate 
+gets updated as well 
+*/
 componentDidUpdate = () => {
   /*because localstorage takes  just string so we have to
   stringify the json file*/
