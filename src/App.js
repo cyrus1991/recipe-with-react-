@@ -33,6 +33,24 @@ class App extends Component {
     });
     console.log(this.state.recipes);
   };
+componentDidMount = () => {
+  const json = localStorage.getItem("recipes")
+  const recipes = JSON.parse(json)
+ this.setState({recipes})
+}
+
+componentDidUpdate = () => {
+  /*because localstorage takes  just string so we have to
+  stringify the json file*/
+
+    const recipes = JSON.stringify(this.state.recipes)
+    /*localStorage takes some argumments the first one is the name 
+    of the item which is going to store which should be in string 
+    and the second one is the actual thing that we wanna store which here is
+    our recipe state*/
+      localStorage.setItem("recipes", recipes)
+   
+}
   render() {
     return (
       <div className="App">
